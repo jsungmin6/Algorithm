@@ -1,25 +1,14 @@
 function solution(n) {
-    if(n==2){
-        return 1
+    var arr=[0]
+    for(var i=1; i<=n; i++){
+      arr[i]=i
     }
 
-    var count=1
-    var s=false
-    for(var i = 3; i<=n;i++)
-        {
-            for(var j=2; j<=i-1; j++)
-                {
-                    if(i%j==0)
-                        {
-                           s=false
-                           break;
-                        }
-                    s=true
-                }
-            if(s){
-                count+=1
-
-            }
-        }
-    return count;
+    for (let i = 2; i <= n; i++) { // 1은 소수제외. 2부터 시작
+      if (arr[i] === 0) continue; // 배수 0 체크한 수는 skip
+      for (let j = i + i; j <= n; j += i) {
+        arr[j] = 0; // n의 배수는 0 채움.
+      }
+    }
+    return arr.filter(v => v > 1).length
 }
