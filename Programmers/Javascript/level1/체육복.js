@@ -1,21 +1,24 @@
 var n=5, lost=[2,3],reserve=[3,4];
 
 function solution(n, lost, reserve) {
-    var answer=n-lost.length;
+    var newlost = lost.filter(x => !reserve.includes(x));
+    var newreserve = reserve.filter(x => !lost.includes(x));
+    var answer=n-newlost.length;
     var count=0;
-    for (var i of lost)
+    for (var i of newlost)
         {
-            if(reserve.includes(i-1))
+
+            if(newreserve.includes(i-1))
                 {
                   console.log('i-1',i-1)
                     count+=1;
-                    reserve.splice(reserve.indexOf(i-1),1);
-                    console.log(reserve)
-                } else if(reserve.includes(i+1)){
+                    newreserve.splice(newreserve.indexOf(i-1),1);
+                    console.log(newreserve)
+                } else if(newreserve.includes(i+1)){
                   console.log('i+1',i+1)
                     count+=1;
-                    reserve.splice(reserve.indexOf(i+1),1);
-                    console.log(reserve)
+                    newreserve.splice(newreserve.indexOf(i+1),1);
+                    console.log(newreserve)
                 }
         }
     return answer+count
