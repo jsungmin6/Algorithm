@@ -1,5 +1,5 @@
-var N=5;
-var stages=[2, 1, 2, 6, 2, 4, 3, 3];
+var N=4;
+var stages=[1,1,1,1,1];
 
 function solution(N, stages) {
     var all=stages.length
@@ -10,10 +10,13 @@ function solution(N, stages) {
                 var ct=count(i,stages);
                 temp.push([i,ct/all])
                 all-=ct
+            } else{
+              temp.push([i,0])
             }
 
         }
     var answer=temp.sort((x,y)=>y[1]-x[1])
+    console.log(answer)
     var list=[];
     for(var i of answer){
       list.push(i[0])
