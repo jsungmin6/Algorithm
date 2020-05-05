@@ -1,23 +1,11 @@
-var m=12
-var n=3;
-var nlist=[];
-var mlist=[];
-for (var i=1;i<=n;i++)
-    {
-        if(n%i===0)
-            {
-                nlist.push(i)
-            }
-    }
-for (var i=1;i<=m;i++)
-    {
-        if(m%i===0)
-            {
-                mlist.push(i)
-            }
-    }
+function gcdlcm(a, b) {
+  var gcd = calc_gcd(a, b);
+  var lcm = (a * b) / gcd;
 
-var g=nlist.filter(x=>mlist.includes(x))
-var k=Math.max(...g)
-var l=m*n/k
-console.log(k,l)
+    return [gcd, lcm];
+}
+
+function calc_gcd(a, b) {
+  if (b == 0) return a;
+    return a > b ? calc_gcd(b, a % b) : calc_gcd(a, b % a);
+}
