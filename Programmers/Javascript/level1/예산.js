@@ -1,18 +1,17 @@
-var budget=9
-var d=[1,1,1,1,1,1,11]
+function solution(d, budget) {
+    var answer = 0;
+    d=d.sort((a,b)=>a-b)
+    var money=0
+    for(var i=0;i<d.length;i++)
+        {
+            money+=d[i]
+            if(money<=budget)
+                {
+                    answer+=1;
+                }else{
+                    break;
+                }
+        }
 
-var answer = 0;
-var sortd=d.sort();
-var money=budget
-console.log(sortd)
-for(var i=0;i<sortd.length;i++)
-    {
-        money-=sortd[i]
-        if(money>=0)
-            {
-                answer+=1;
-            }else{
-                break;
-            }
-    }
-console.log(answer)
+    return answer;
+}
