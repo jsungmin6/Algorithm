@@ -1,5 +1,6 @@
-n=12456
-str(n)
-list=sorted(str(n),reverse=True)
-answer=''.join(list)
-print(answer)
+n=str(input())
+
+for i in range(9,-1,-1):
+    for j in n:
+        if int(j)==i:
+            print(i,end='')
