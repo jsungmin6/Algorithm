@@ -9,5 +9,5 @@ for i in range(n):
 
 for i in range(10001):
     if array[i]!=0:
-        for i in range(array[i]):
+        for j in range(array[i]):
             print(i)
