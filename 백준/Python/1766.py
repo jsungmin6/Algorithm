@@ -20,7 +20,7 @@ while heap:
     data = heapq.heappop(heap)
     result.append(data)
     for y in array[data]:
-        indegree[y]-=-1
+        indegree[y]-=1
         if indegree[y]==0:
             heapq.heappush(heap,y)
 
