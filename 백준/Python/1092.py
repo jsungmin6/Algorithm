@@ -1,28 +1,34 @@
 import sys
 
 n=int(input())
-crain=list(map(int,input().split()))
-crain.sort(reverse=True)
+cranes=list(map(int,input().split()))
+cranes.sort(reverse=True)
 
 m=int(input())
-box=list(map(int,input().split()))
-box.sort(reverse=True)
+boxes=list(map(int,input().split()))
+boxes.sort(reverse=True)
 
-if max(crain) < max(boxes):
+if max(cranes) < max(boxes):
     print(-1)
     sys.exit()
 
-index=-1
-for w in range(len(box)):
-    if index==0:
-        count+=1
-    index+=1
-    while True:
-        index%=3
-        if crain[index]>=box[w]:
-            crain[index]-=box[w]
-            break
-        else:
-            index+=1
+positions = [0]*n;
+checked= [False]*m
 
-print(count)
+result=0
+count=0
+
+while True:
+    if count == len(boxes):
+        break
+    for i in range(n):
+        while positions[i] <len(boxes):
+            if not checked[positions[i]] and cranes[i] >= boxes[positions[i]]:
+                checked[positions[i]] =True
+                positions[i] +=1
+                count +=1
+                break
+            positions[i]+=1
+    result +=1
+
+print(result)
