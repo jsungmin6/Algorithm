@@ -1,13 +1,20 @@
+import sys
 
-sensor =[1, 6, 9, 3, 6, 7]
-k=2
+n=int(input())
+k=int(input())
+
+if k>=n:
+    print(0)
+    sys.exit()
+sensor=list(map(int,input().split(' ')))
 sensor.sort()
 
-print(sensor)
-answer=list()
-for i in range(1,len(sensor)):
+answer=[]
+for i in range(1,n):
     answer.append(sensor[i]-sensor[i-1])
 
+answer.sort(reverse=True)
 for i in range(k-1):
-    del answer[answer.index(max(answer))]
-    print(answer)
+    answer[i]=0
+
+print(sum(answer))
