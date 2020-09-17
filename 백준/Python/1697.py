@@ -15,4 +15,5 @@ def bfs(n):
                 array[next_pos] = array[now_pos]+1
                 q.append(next_pos)
 
+
 print(bfs(n))
