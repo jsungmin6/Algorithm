@@ -1,32 +1,40 @@
+#유기농 배추 DFS 문제
+#배열을 생성 후 배열을 0,0 부터 돌면서 몇번 dfs 가 발생하는지 체크
 
-import sys
-sys.setrecursionlimit(100000)
+from collections import deque
 
-t=int(input())
+def dfs(j,i):
+    matrix[j][i]=0
+    for k in range(4):
+        newDx=i+dx[k]
+        newDy=j+dy[k]
+
+        if 0<=newDx and newDx<M and 0<=newDy and newDy<N and matrix[newDy][newDx]==1:
+            dfs(newDy,newDx)
 
 
-def dfs(i,j):
-    if array[i][j]==1:
-        array[i][j]=0
-        if i<n-1:
-            dfs(i+1,j)
-        if j<m-1:
-            dfs(i,j+1)
-        if i>0:
-            dfs(i-1,j)
-        if j>0:
-            dfs(i,j-1)
 
-for _ in range(t):
-    count=0
-    m,n,k=map(int,input().split())
-    array=[[0]*m for _ in range(n)]
-    for _ in range(k):
+dx=[0,0,1,-1]
+dy=[1,-1,0,0]
+answer=[]
+T=int(input())
+for _ in range(T):
+    M,N,K=map(int,input().split())
+    matrix=[[0]*M for i in range(N)]
+
+    for _ in range(K):
         x,y=map(int,input().split())
-        array[y][x]=1
-    for i in range(n):
-        for j in range(m):
-            if array[i][j]==1:
-                dfs(i,j)
+        matrix[y][x]=1
+
+
+    count=0
+    for i in range(M):
+        for j in range(N):
+            if matrix[j][i]==1:
+                dfs(j,i)
                 count+=1
-    print(count)
+
+    answer.append(count)
+
+for i in answer:
+    print(i)

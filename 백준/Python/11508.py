@@ -11,7 +11,6 @@ for i in range(N):
 
 data.sort(reverse=True)
 
-print(data)
 sum=0
 for i in range(len(data)):
     if i%3 == 2 :
