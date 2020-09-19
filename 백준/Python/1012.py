@@ -2,6 +2,8 @@
 #배열을 생성 후 배열을 0,0 부터 돌면서 몇번 dfs 가 발생하는지 체크
 
 from collections import deque
+import sys
+sys.setrecursionlimit(100000)
 
 def dfs(j,i):
     matrix[j][i]=0
@@ -12,10 +14,10 @@ def dfs(j,i):
         if 0<=newDx and newDx<M and 0<=newDy and newDy<N and matrix[newDy][newDx]==1:
             dfs(newDy,newDx)
 
-
-
+#dfs사용시 동서남북 데이터
 dx=[0,0,1,-1]
 dy=[1,-1,0,0]
+
 answer=[]
 T=int(input())
 for _ in range(T):
