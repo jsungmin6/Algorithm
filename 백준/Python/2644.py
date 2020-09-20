@@ -1,7 +1,8 @@
-#문제이름 : 촌수계산 BFS
+#문제이름 : 촌수계산
 
 #풀이계획
 
+#BFS
 #인접 리스트로 연결
 #출발점과 도착점 설정
 #queue에 need_visit
@@ -10,42 +11,42 @@
 
 ###############################################################
 
-# from collections import deque
-#
-# n=int(input())
-# graph=[[] for i in range(n+1)]
-#
-# start,end=map(int,input().split())
-#
-# m=int(input())
-#
-# for _ in range(m):
-#     x,y=map(int,input().split())
-#     graph[x].append(y)
-#     graph[y].append(x)
-#
-#
-# visited=[False for i in range(n+1)]
-#
-# def dfs(start):
-#     need_visit=deque([start])
-#     count=0
-#     while need_visit:
-#         qsize=len(need_visit)
-#         for i in range(qsize):
-#             node = need_visit.popleft()
-#
-#             if node == end:
-#                 return count
-#
-#             visited[node]=True
-#             for j in graph[node]:
-#                 if visited[j]==False:
-#                     need_visit.append(j)
-#         count+=1
-#     return -1
-#
-# print(dfs(start))
+from collections import deque
+
+n=int(input())
+graph=[[] for i in range(n+1)]
+
+start,end=map(int,input().split())
+
+m=int(input())
+
+for _ in range(m):
+    x,y=map(int,input().split())
+    graph[x].append(y)
+    graph[y].append(x)
+
+
+visited=[False for i in range(n+1)]
+
+def dfs(start):
+    need_visit=deque([start])
+    count=0
+    while need_visit:
+        qsize=len(need_visit)
+        for i in range(qsize):
+            node = need_visit.popleft()
+
+            if node == end:
+                return count
+
+            visited[node]=True
+            for j in graph[node]:
+                if visited[j]==False:
+                    need_visit.append(j)
+        count+=1
+    return -1
+
+print(dfs(start))
 
 #다른사람 풀이1
 
