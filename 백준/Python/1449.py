@@ -11,6 +11,7 @@
 
 N,L = map(int,input().split())
 spot=list(map(int,input().split()))
+spot.sort()
 array=[0]*1001
 count=0
 

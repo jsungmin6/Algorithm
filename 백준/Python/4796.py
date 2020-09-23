@@ -23,3 +23,14 @@ while True:
     print('Case',i,end='')
     print(':',answer)
     i+=1
+
+#다른사람 풀이1
+
+import sys
+cases = sys.stdin.read().splitlines()
+for i, case in enumerate(cases):
+    L, P, V = map(int,case.split())
+    if L == 0 and P == 0 and V == 0:
+        break
+    answer = ((V // P) * L) + min(V%P, L)
+    print("Case {}: {}".format(i+1, answer))

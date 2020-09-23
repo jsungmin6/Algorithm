@@ -17,6 +17,7 @@ M=int(input())
 
 for _ in range(M):
     st=list(map(int,input().split()))
+    st=st[1:]
     count=0
     for i in timeTable:
         data=set(i)-set(st)
