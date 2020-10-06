@@ -10,15 +10,11 @@ function solution(n, lost, reserve) {
 
             if(newreserve.includes(i-1))
                 {
-                  console.log('i-1',i-1)
                     count+=1;
                     newreserve.splice(newreserve.indexOf(i-1),1);
-                    console.log(newreserve)
                 } else if(newreserve.includes(i+1)){
-                  console.log('i+1',i+1)
                     count+=1;
                     newreserve.splice(newreserve.indexOf(i+1),1);
-                    console.log(newreserve)
                 }
         }
     return answer+count

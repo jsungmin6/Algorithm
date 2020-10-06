@@ -19,5 +19,3 @@ for i in range(len(array)-1,0,-1):
 
 
 print(left,right)
-
-    

@@ -22,4 +22,5 @@ for(var i=heights.length-1;i>0;i--)
           key=1;
         }
     }
+answer.unshift(0);
 console.log(answer)
