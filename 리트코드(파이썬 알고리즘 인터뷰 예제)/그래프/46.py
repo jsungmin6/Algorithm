@@ -1,4 +1,4 @@
-#전화번호 문자 조합
+#순열
 
 '''
 Given a collection of distinct integers, return all possible permutations.
