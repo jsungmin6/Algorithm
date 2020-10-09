@@ -11,7 +11,6 @@ while left!=right:
     elif sum < N:
         right+=1
     else:
-        print(left,right)
         left+=1
         right+=1
         answer+=1

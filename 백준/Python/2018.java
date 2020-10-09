@@ -1,3 +1,8 @@
+import java.util.Scanner;
+
+public class Main {
+	public static void main(String[] args) {
+
 	Scanner sc = new Scanner(System.in);
 
 	int cnt_number = sc.nextInt();  // 배열 원소의 갯수

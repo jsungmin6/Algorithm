@@ -22,10 +22,11 @@ left=0
 right=left+window
 maxAnswer=0
 
+#윈도우크기가 배열보다 크면 다 더한값으로 처리
 if maxX<=right:
     answer=sum(array)
     print(answer)
-    exit(1)
+    exit(0)
 
 while right<maxX+2:
     answer=sum(array[left:right])

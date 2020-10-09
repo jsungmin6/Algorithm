@@ -1,4 +1,14 @@
+#괄호 제거
 
+#풀이과정
+
+#비트마스킹으로 못 풀겠어서 결국 인터넷 검색
+#'('')'의 짝을 인덱스로 가지는 배열을 만듬(enumerate 활용)
+#입력받은 값에서 () 를 다 없앰
+#인덱스 배열을 combinaitons 해서 가능한 조합을 배열에 삽입
+#정렬
+
+######################
 
 from itertools import combinations
 problem = [*input().strip()] # 문자열 하나씩 리스트화
