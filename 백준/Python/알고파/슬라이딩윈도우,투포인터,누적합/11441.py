@@ -29,4 +29,12 @@ for _ in range(M):
 
 # # # # # # # # # # # # # # # # # # # # # 다른 사람 풀이
 '''
+누적합 배열 구하는 다른 for문
 '''
+
+import sys
+
+N = int(sys.stdin.readline())
+A = list(map(int,sys.stdin.readline().split()))
+for i in range(N-1):
+    A[i+1] += A[i]
