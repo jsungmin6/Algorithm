@@ -28,12 +28,10 @@ def merge(a,b):
         return
     p[b][1]=a;
 
-
 import sys
 input = sys.stdin.readline
 N,M,K= map(int,input().split())
 cost= list(map(int,input().split()))
-
 
 p=[[i,-1] for i in range(N+1)]
 
@@ -48,28 +46,17 @@ for i in p:
         root_index_list.append(i[0])
 
 #그룹별 최소비용을 가진 녀석들을 찾아서 모아준다.
-# group_cost=0
-min_cost=sys.maxsize
-# visited=[]
-
-# find(1~N)까지 해서 root랑 같아지는 녀석들끼리 묶어서 min값찾고 group_cost에 넣어줌. 시간 오래 먹을듯.
-# for root in root_index_list:
-#     for i in range(1,N+1):
-#         if i not in visited and find(i) == root:
-#             min_cost=min(cost[i-1],min_cost)
-#             visited.append(i)
-#     group_cost+=min_cost
-#     min_cost=sys.maxsize
-
-index_list=[float('inf')]*(1+max(root_index_list))
+group_list=[float('inf')]*(1+max(root_index_list))
 for i in range(1,N+1):
     if find(i) in root_index_list:
-        index_list[find(i)]=min(index_list[find(i)],cost[i-1])
+        group_list[find(i)]=min(group_list[find(i)],cost[i-1])
 
+#대가리 인덱스에 있는 최솟값들 더해줌
 group_cost=0
 for i in root_index_list:
-    group_cost+=index_list[i]
+    group_cost+=group_list[i]
 
+#총합이 K보다 작은지 비교
 if group_cost<=K:
     print(group_cost)
 else:
