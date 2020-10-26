@@ -22,7 +22,7 @@ for _ in range(N):
 answer=0
 answer+=min(hard_num,K) * 140
 
-if hard < K:
+if hard_num < K:
     answer+=min(easy_num,K-hard_num) * 100
 
 print(answer)
