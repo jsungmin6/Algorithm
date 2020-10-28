@@ -7,6 +7,14 @@
 K 이상인 범위를 발견했을 때 지워준다.
 밑에 0이 있다면 내려준다.
 반복 => 지우는게 없을 때 끝
+
+함수를 나눠서 처리하고, check box를 만들어서 체크한곳을 다시 체크하지 않게 주의가 필요하다. 안 그러면 무한루프를 계속 돈다.
+
+왜 틀렸나 계속 봤는데 0을 '0'으로 안 처리한게 하나 있었다.
+근데 에러는 다른곳에서 계속 터져서 시간이 오래 걸렸다.
+틀렸을 때 디버깅 하는 연습이 많이 필요할 듯.
+
+
 '''
 # # # # # # # # # # # # # # # # # # # # # 내 풀이
 import sys
@@ -20,7 +28,6 @@ def in_M(i, j):
     if i < 0 or j < 0 or i >= N or j >= 10:
         return False
     return True
-
 
 def dfs_num(i, j):
     ch_num[i][j] = True
@@ -38,19 +45,6 @@ def dfs_num(i, j):
 
     return ret
 
-# def dfs_num(x, y):
-#     ch_num[x][y] = True
-#     count = 1
-#     for i in range(4):
-#         xx, yy = x + dx[i], y + dy[i]
-#         if xx < 0 or xx >= N or yy < 0 or yy >= 10:
-#             continue
-#         if ch_num[xx][yy] or M[x][y] != M[xx][yy]:
-#             continue
-#         count += dfs_num(xx, yy)
-#     return count
-
-
 def dfs_remove(i, j, val):
     M[i][j] = '0'
     ch_remove[i][j] = True
@@ -65,17 +59,6 @@ def dfs_remove(i, j, val):
 
         dfs_remove(new_x, new_y, val)
 
-# def dfs_remove(x, y, m):
-#     ch_remove[x][y] = True
-#     M[x][y] = '0'
-#     for i in range(4):
-#         xx, yy = x + dx[i], y + dy[i]
-#         if xx < 0 or xx >= N or yy < 0 or yy >= 10:
-#             continue
-#         if ch_remove[xx][yy] or M[xx][yy] != m:
-#             continue
-#         dfs_remove(xx, yy, m)
-
 
 def down():
     for j in range(10):
@@ -87,18 +70,6 @@ def down():
         zero_temp.extend(temp)
         for i in range(N):
             M[i][j] = zero_temp[i]
-
-
-# def down():
-#     for i in range(10):
-#         lst = []
-#         for j in range(N):
-#             if M[j][i] != '0':
-#                 lst.append(M[j][i])
-#                 M[j][i] = '0'
-#         for k in range(N-1, 0, -1):
-#             if lst:
-#                 M[k][i] = lst.pop()
 
 
 N, K = map(int, input().split())
