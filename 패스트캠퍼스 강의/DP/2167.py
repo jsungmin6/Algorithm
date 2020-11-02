@@ -1,26 +1,20 @@
-# 가장 큰 정사각형
+# #############################DP 사용
 
-# 풀이 방법
 '''
-점화식을 세우는게 관건.
-이런 문제는 유형이라 많이 풀어보는 수 밖에 없다.
-DP[i][j] 는 i,j 까지 만들 수 있는 가장 큰 정사각형의 한 변의 길이이다.
-또한 i,j 지점이 정사각형이 되려면 [i-1,j][i,j-1][i-1,j-1] 이렇게 3개가 정사각형이어야 한다.
-즉
-DP[i][j] = min(DP[i-1][j],DP[i][j-1],DP[i-1][j-1]) + 1
+DP를 이용해 누적합 배열을 구해준다.
 '''
 
-n, m = map(int, input().split())
-A = [[0 for i in range(m+1)] for j in range(n+1)]
-DP = [[0 for i in range(m+1)] for j in range(n+1)]
+N, M = map(int, input().split())
+A = [list(map(int, input().split())) for i in range(N)]
+DP = [[0 for i in range(M+1)] for j in range(N+1)]
 
-for i in range(n):
-    for idx, j in enumerate(list(map(int, list(input())))):
-        A[i+1][idx+1] = j
+for i in range(1, N+1):
+    for j in range(1, M+1):
+        DP[i][j] = DP[i-1][j] + DP[i][j-1] - DP[i-1][j-1] + A[i-1][j-1]
 
-for i in range(n+1):
-    for j in range(m+1):
-        if A[i][j] != 0:
-            DP[i][j] = min(DP[i-1][j], DP[i][j-1], DP[i-1][j-1]) + 1
 
-print(max([max(i) for i in DP])**2)
+K = int(input())
+
+for _ in range(K):
+    x1, y1, x2, y2 = map(int, input().split())
+    print(DP[x2][y2] - DP[x2][y1-1] - DP[x1-1][y2] + DP[x1-1][y1-1])
