@@ -9,8 +9,6 @@
 '''
 N=int(input())
 
-
-
 answer=1
 for i in range(100):
     answer+=1
