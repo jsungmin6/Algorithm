@@ -34,8 +34,7 @@ while Q:
 
         for v in graph[node]:
             alt = weight+1
-            if alt < dist[v]:
-                heapq.heappush(Q, (alt, v))
+            heapq.heappush(Q, (alt, v))
 
 if not answer:
     print(-1)
