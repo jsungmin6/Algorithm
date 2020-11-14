@@ -18,11 +18,11 @@ ends=[0]
 for time in times:
     s,e = time
     min_ends = ends[0]
-    if s >= min_ends:
-        heapq.heappop(ends)
-        heapq.heappush(ends,e)
-    else:
-        heapq.heappush(ends,e)
+    if s < min_ends:
         count+=1
+    else:
+        heapq.heappop(ends)
+    heapq.heappush(ends,e)
+        
 
 print(count)
