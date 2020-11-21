@@ -5,7 +5,7 @@
 '''
 N = int(input())
 
-Map = [[0 for i in range(N)] for j in range(N)]
+Map = [[' ' for i in range(N)] for j in range(N)]
 
 
 def star(N, x, y):
@@ -16,15 +16,17 @@ def star(N, x, y):
                     Map[x+i][y+j] = ' '
                 else:
                     Map[x+i][y+j] = '*'
-        for i in Map:
-            print(i)
+
         return
-    N %= 3
+    N //= 3
+    
     for i in range(3):
         for j in range(3):
             if i == 1 and j == 1:
                 continue
-            star(N, x+(i*N), y+(j*N))
+            star(N, x+i*N, y+j*N)
 
 
 star(N, 0, 0)
+for i in Map:
+    print(''.join(i))
