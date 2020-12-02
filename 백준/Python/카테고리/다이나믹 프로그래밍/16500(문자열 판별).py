@@ -11,16 +11,27 @@ for _ in range(N):
 
 ch = False
 
+dp=[0]*(len(S)+1)
 
 def word(k):
     global ch
     if len(k) == 0:
         ch = True
+        return ch
+    if dp[len(S)-len(k)] == 1:
+        return 
     for a in A:
         a_l = len(a)
+        if len(k) < a_l:
+            continue
         if k[0:a_l] == a:
+            dp[len(S)-len(k)] = 1
             word(k[a_l:])
     return ch
 
+word(S)
 
-print(word(S))
+if ch:
+    print(1)
+else:
+    print(0)
