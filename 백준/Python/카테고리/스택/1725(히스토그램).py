@@ -5,7 +5,8 @@
 스택의 top이 현재 히스토그램 높이보다 같거나 높다면, 그렇지 않게 될 때까지 pop한다. 이때 pop하면서 발생하는 각 직사각형의 넓이 중 최댓값이 결과가 된다.
 [출처] 스택(Stack) (수정 2019-05-14)|작성자 라이
 '''
-
+import sys
+input = sys.stdin.readline
 N=int(input())
 hitograms = []
 stack=[]
@@ -24,39 +25,37 @@ for i,historgram in enumerate(hitograms):
     else: #스택의 top이 현재 히스토그램 높이보다 같거나 높다면, 그렇지 않게 될 때까지 pop한다
         while True:
             temp = stack.pop() # pop진행
-            print('temp :',temp)
+            # print('temp :',temp)
             if not stack:
-                print('i :',i)
+                # print('i :',i)
                 size = i*temp[1]
-                print('size :',size)
+                # print('size :',size)
                 result.append(size)
                 break
             else:
-                size = (i-temp[0])*temp[1] # 블록 크기 계산
-                print('size :',size)
+                size = (i-stack[-1][0]-1)*temp[1] # 블록 크기 계산
+                # print('size :',size)
                 result.append(size) #result에 블록 기록
             if historgram > stack[-1][1]:
                 break
         stack.append((i,historgram))
     
-    print('stack :',stack)
+    # print('stack :',stack)
     if i == N-1:
         if stack:
             while True:
                 temp = stack.pop() # pop진행
-                print('temp :',temp)
+                # print('temp :',temp)
                 if not stack:
-                    print('i :',i)
-                    size = i*temp[1]
-                    print('size :',size)
+                    # print('i :',i)
+                    size = (i+1)*temp[1]
+                    # print('size :',size)
                     result.append(size)
                     break
                 else:
-                    size = (i-temp[0])*temp[1] # 블록 크기 계산
-                    print('size :',size)
+                    size = (i-stack[-1][0])*temp[1] # 블록 크기 계산
+                    # print('size :',size)
                     result.append(size) #result에 블록 기록
-                if historgram > stack[-1][1]:
-                    break
 
 
-print(result)
+print(max(result))
