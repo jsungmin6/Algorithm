@@ -3,6 +3,8 @@ visited 와 graph를 만들어 구하는게 아닐까
 '''
 
 from collections import deque
+import sys
+input = sys.stdin.readline
 
 N,M = map(int,input().split())
 visited = [0]*(N+1)
@@ -23,6 +25,7 @@ def dfs(i):
             if visited[k] !=0:
                 continue
             need_visit.append(k)
+
 
 for _ in range(M):
     u,v = map(int,input().split())
