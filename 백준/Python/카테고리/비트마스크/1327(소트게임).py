@@ -6,7 +6,7 @@ N,K=map(int,input().split())
 L=list(input().split())
 
 
-visited=set()
+visited=set("".join(L))
 q=deque([["".join(L),0]])
 
 
@@ -18,14 +18,12 @@ q=deque([["".join(L),0]])
 
 cnt=-1
 while q:
-    node, c = q.pop()
-    visited.add(node)
-    tempL=list(node)
+    word, c = q.pop()
+    tempL=list(word)
 
     if tempL==sorted(tempL):
         cnt=c
         break
-    
     
     for i in range(0,N-K+1):
         # left = temp[0:i]
@@ -41,6 +39,7 @@ while q:
             newL[i+j]=targetL[j]
         newWord="".join(newL)
         if newWord not in visited:
+            visited.add(newWord)
             q.append([newWord,c+1])
 print(cnt)
     
