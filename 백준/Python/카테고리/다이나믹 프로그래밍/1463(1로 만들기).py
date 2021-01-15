@@ -19,23 +19,23 @@ for i in range(1,N+1):
 
 print(dp[N])
 
-# #top down
-# import sys
-# sys.setrecursionlimit(100000)
-# def dp(N):
-#     if m[N]!=-1:
-#         return m[N]
-#     if N==1:
-#         return 0
+#top down
+import sys
+sys.setrecursionlimit(100000)
+def dp(N):
+    if m[N]!=-1:
+        return m[N]
+    if N==1:
+        return 0
 
-#     count = dp(N-1) + 1
-#     if N%3 == 0:
-#         count = min(count,dp(N//3) + 1)
-#     if N%2 == 0:
-#         count = min(count,dp(N//2) + 1)
-#     m[N] = count
-#     return count
+    count = dp(N-1) + 1
+    if N%3 == 0:
+        count = min(count,dp(N//3) + 1)
+    if N%2 == 0:
+        count = min(count,dp(N//2) + 1)
+    m[N] = count
+    return count
 
-# N = int(sys.stdin.readline())
-# m =[-1]*1000001
-# print(dp(N))
+N = int(sys.stdin.readline())
+m =[-1]*1000001
+print(dp(N))
