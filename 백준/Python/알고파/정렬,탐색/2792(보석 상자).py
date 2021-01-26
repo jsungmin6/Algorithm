@@ -29,7 +29,7 @@ while lo <= hi:
 
     cnt = solution(mid)
 
-    # print('lo={}, hi={}, mid ={}, cnt={}'.format(lo,hi,mid,cnt))
+    print('lo={}, hi={}, mid ={}, cnt={}'.format(lo,hi,mid,cnt))
 
     if N >= cnt:
         ans = mid
