@@ -3,6 +3,9 @@
 N이 50 이하이므로 O(N^2)으로 풀어도 될 것 같다.
 '''
 
+import sys
+input =sys.stdin.readline
+
 N = int(input())
 arr = []
 for _ in range(N):

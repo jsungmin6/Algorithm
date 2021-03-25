@@ -23,3 +23,30 @@ for i in range(4,100001):
 
 for _ in range(T):
     print(sum(dp[int(input())]) % mod)
+
+
+#다른 풀이
+'''
+end1[i] = i번째수가 1로 끝나는 경우의 수
+end2[i] = i번째수가 2로 끝나는 경우의 수
+'''
+
+import sys
+ 
+input = sys.stdin.readline
+flush = sys.stdout.flush
+
+end1 = [None, 1, 0, 1]
+end2 = [None, 0, 1, 1]
+end3 = [None, 0, 0, 1]
+for _ in range(10**5):
+    tmp1 = end2[-1] + end3[-1]
+    tmp2 = end1[-2] + end3[-2]
+    tmp3 = end1[-3] + end2[-3]
+    end1.append(tmp1 % (10**9 + 9))
+    end2.append(tmp2 % (10**9 + 9))
+    end3.append(tmp3 % (10**9 + 9))
+
+for _ in range(int(input())):
+    n = int(input())
+    print((end1[n] + end2[n] + end3[n]) % (10**9 + 9))
