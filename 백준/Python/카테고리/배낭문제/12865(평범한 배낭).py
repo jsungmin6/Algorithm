@@ -4,19 +4,22 @@
 dp[i] = max(dp[i],dp[i-w]+v)
 '''
 
-# #개수가 무한일 때
-# import sys
-# input = sys.stdin.readline
-# N,K = map(int,input().split())
-# dp = [0]*(K+1)
-# for _ in range(N):
-#     W,V = map(int,input().split())
+#개수가 무한일 때
 
-#     for i in range(W,K+1):
-#         dp[i] = max(dp[i],dp[i-W]+V)
-#     print(dp)
+import sys
+input = sys.stdin.readline
+N,K = map(int,input().split())
+dp = [0]*(K+1)
+for _ in range(N):
+    W,V = map(int,input().split())
+
+    for i in range(W,K+1):
+        dp[i] = max(dp[i],dp[i-W]+V)
+    print(dp)
+
 
 #개수가 1개씩 일 때
+
 import sys
 input = sys.stdin.readline
 N,K = map(int,input().split())
