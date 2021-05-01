@@ -1,6 +1,8 @@
 '''
 풀이
-dp[i] = i번 집까지의 최솟값
+dp[0] = R을 골랐을 때 지금까지의 최솟값
+dp[1] = G을 골랐을 때 지금까지의 최솟값
+dp[2] = B을 골랐을 때 지금까지의 최솟값
 '''
 import sys
 input = sys.stdin.readline

@@ -27,10 +27,12 @@ def cast_skill(MAP, move):
     cloud_temp = [[False for _ in range(n)] for _ in range(n)]  # 구름 true, false
     cloud = deepcopy(cloud_temp)
     # 처음. 비바라기 시전 후 구름 위치 표시 ((N, 1), (N, 2), (N-1, 1), (N-1, 2))
+
     cloud[n - 1][0] = True
     cloud[n - 1][1] = True
     cloud[n - 2][0] = True
     cloud[n - 2][1] = True
+
     for d, s in move:
         new_cloud = deepcopy(cloud_temp)
         dx, dy = direct2xy[d]
@@ -43,6 +45,7 @@ def cast_skill(MAP, move):
                     new_cloud[new_y][new_x] = True
                     # 2. 비를 내려 칸 +1
                     MAP[new_y][new_x] += 1
+
         # 3. 각 구름은 대각선에 물이 1 이상인 칸의 수만큼 물 증가, 이 때 경계를 넘지 못함
         for y in range(n):
             for x in range(n):
@@ -50,6 +53,7 @@ def cast_skill(MAP, move):
                     for dx, dy in [(-1, -1), (-1, 1), (1, -1), (1, 1)]:
                         if 0 <= y + dy < n and 0 <= x + dx < n and MAP[y + dy][x + dx]:
                             MAP[y][x] += 1
+                            
         # 5. 구름 사라짐 & 바구니에 저장된 물의 양이 2 이상인 모든 칸에 구름이 생기고, 물의 양이 2 줄어든다.
         for y in range(n):
             for x in range(n):

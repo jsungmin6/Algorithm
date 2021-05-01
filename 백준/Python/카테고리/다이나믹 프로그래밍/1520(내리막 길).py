@@ -6,7 +6,7 @@ dfs
 import sys
 from collections import deque
 input = sys.stdin.readline
-
+sys.setrecursionlimit(10000)
 M,N = map(int,input().split())
 mat = [list(map(int,input().split())) for i in range(M)]
 dp = [[-1 for i in range(N)] for j in range(M)]
