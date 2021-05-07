@@ -16,33 +16,98 @@ total 에서는 m만큼 빼준다.
 
 계속 0이하가 되는지 확인한다.
 
-0이하가 되었다면 거기서 m위안에 들어야한다. m번째 녀석보다 1분 빠른게 답이다.
+0이하가 되었다면 거기서 m위안에 들어야한다. total번째 녀석보다 1분 빠른게 답이다.
 
 마지막버스까지 공간이 남는다면 마지막 버스 도착시간이 답이다.
 
 '''
-from datetime import datetime
-n=1
-t=1
-m=5
-timetable = ["08:00", "08:01", "08:02", "08:03"]
+from collections import deque
+n=10
+t=60
+m=45
+timetable = ["23:59","23:59", "23:59", "23:59", "23:59", "23:59", "23:59", "23:59", "23:59", "23:59", "23:59", "23:59", "23:59", "23:59", "23:59", "23:59"]
+
+def append_waiting(start,end,datetimes):
+    global waiting
+    while datetimes:
+        if start <= datetimes[0] <= end:
+            waiting.append(datetimes.popleft())
+        else:
+            break
+
+waiting = deque([])
 
 def solution(n, t, m, timetable):
-    waiting = []
+    
     total = n*m
-
-    zero = datetime.strptime("00:00","%H:%M")
-    end = datetime.strptime("09:00","%H:%M")
-
+    times = []
 
     for time in timetable:
-        d_time = datetime.strptime(time,"%H:%M")
-        if zero <= d_time and d_time <= end:
-            waiting.append(d_time)
+        H,M = time.split(":")
+        minutes = int(H)*60 + int(M)
+        times.append(minutes)
 
-    print(waiting)
-    answer = ''
-    return answer
+    times.sort()
+    datetimes = deque(times)
+
+    zero = 0
+    end = 9*60
+
+    append_waiting(zero,end,datetimes)
+
+    print("waiting 시작 초기화 : ",waiting)
+
+    call_arive = False
+    call_time = 0
+
+    for i in range(n):
+        waiting_num = len(waiting)
+
+        if waiting_num >= total:
+            # 콜도 타야함.
+            print("waiting : ",waiting)
+            call_time = waiting[total-1] - 1
+            call_arive = True
+            break
+
+        else:
+            # 콜 안탐
+            
+            # waiting에서 m명만큼 비움
+            for _ in range(m):
+                if waiting:
+                    waiting.popleft()
+                else:
+                    break
+            
+            # 가능인원 줄임
+            total -= m
+
+            #waiting에 다음 시간 추가
+
+            start, end = end,end+t
+            append_waiting(start,end,datetimes)
+
+    
+    if call_arive:
+        
+        h = str(call_time//60)
+        m = str(call_time%60)
+
+        if len(h) < 2:
+            h = "0"+h
+        if len(m) < 2:
+            m = "0"+m
+        return h+":"+m
+    else:
+        h = str(start//60)
+        m = str(start%60)
+
+        if len(h) < 2:
+            h = "0"+h
+        if len(m) < 2:
+            m = "0"+m
+        return h+":"+m
 
 
 print(solution(n, t, m, timetable))
