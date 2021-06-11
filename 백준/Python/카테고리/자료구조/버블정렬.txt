@@ -1,0 +1,14 @@
+'''
+배열내에서 앞뒤로 값을 비교해 정렬
+'''
+
+arr = [1,4,5,3,2]
+
+def bubble(arr):
+    l = len(arr)
+    for i in range(l,-1,-1):
+        for j in range(i):
+            if arr[j] > arr[j+1]:
+                 arr[j],arr[j+1] = arr[j+1],arr[j]
+            
+

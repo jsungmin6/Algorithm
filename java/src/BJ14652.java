@@ -1,16 +1,23 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class BJ14652 {
-    public static void main(String[] args) throws IOException {
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        String[] sList = br.readLine().split(" ");
-        int N = Integer.parseInt(sList[0]);
-        int K = Integer.parseInt(sList[1]);
-        int M = Integer.parseInt(sList[2]);
+    public static void main(String[] args){
 
-        System.out.println(M / K + " " + M % K);
+        List aaa = new ArrayList();
+
+        aaa.add("hi");
+        aaa.add(123);
+
+        String o = (String) aaa.get(0);
+
+        System.out.println(aaa.toString());
+
+
 
     }
 

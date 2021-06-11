@@ -1,4 +1,3 @@
-import timeit
 
 def bubble1(arr):
     l = len(arr)
